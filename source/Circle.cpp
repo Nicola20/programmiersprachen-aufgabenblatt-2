@@ -1,13 +1,17 @@
 #include "Circle.hpp"
 
-Circle::Circle (float r, float d, Vec2 const& c):
+Circle::Circle (float r, float d, Vec2 const& c, Color const& color):
    radius_{r},
    diameter_{d},
-   center_{c} {}
+   center_{c},
+   color_{color} 
+   {}
 
-Circle::Circle (float r, Vec2 const& c):
+Circle::Circle (float r, Vec2 const& c, Color const& color):
    radius_{r},
-   center_{c} {}
+   center_{c},
+   color_{color} 
+   {}
 
 float Circle::getRadius() const {
     return this -> radius_;
@@ -20,6 +24,10 @@ float Circle::getDiameter() const {
 
 Vec2 Circle::getCenter() const {
     return this -> center_;
+}
+
+Color Circle::getColor() const {
+    return this -> color_;
 }
 
 float Circle::circumference() const {
