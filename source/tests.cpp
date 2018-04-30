@@ -326,40 +326,53 @@ TEST_CASE("division_operator", "[division_operator]")
  /*Circle*/
    TEST_CASE ("circle_all_constructor","[circle_all]")
  {
-    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}};
-		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}};
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}, Color{1.0f, 2.1f,3.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}, Color{0.0f}};
 
     REQUIRE(c1.getRadius() == 6.7f);
     REQUIRE(c1.getDiameter() == 1.0f);
 		REQUIRE(c1.getCenter().x_ == 3.0f);
 		REQUIRE(c1.getCenter().y_ == 1.0f);
+		REQUIRE(c1.getColor().r_ == 1.0f);
+		REQUIRE(c1.getColor().g_ == 2.1f);
+		REQUIRE(c1.getColor().b_ == 3.0f);
 
     REQUIRE(c2.getRadius() == 2.7f);
     REQUIRE(c2.getDiameter() == 5.0f);
 		REQUIRE(c2.getCenter().x_ == 1.0f);
 		REQUIRE(c2.getCenter().y_ == 1.3f);
+		REQUIRE(c2.getColor().r_ == 0.0f);
+		REQUIRE(c2.getColor().g_ == 0.0f);
+		REQUIRE(c2.getColor().b_ == 0.0f);
  }
 
 
    TEST_CASE ("circle_radius_constructor","[circle_radius]")
  {
-    Circle c1{6.7f,Vec2{3.0f,1.0f}};
-		Circle c2{2.7f,Vec2{3.2f,-1.5f}};
+    Circle c1{6.7f,Vec2{3.0f,1.0f}, Color{1.0f, 2.1f,3.0f}};
+		Circle c2{2.7f,Vec2{3.2f,-1.5f}, Color{1.0f}};
 
     REQUIRE(c1.getRadius() == 6.7f);
 		REQUIRE(c1.getCenter().x_ == 3.0f);
 		REQUIRE(c1.getCenter().y_ == 1.0f);
+		REQUIRE(c1.getColor().r_ == 1.0f);
+		REQUIRE(c1.getColor().g_ == 2.1f);
+		REQUIRE(c1.getColor().b_ == 3.0f);
+		
 
     REQUIRE(c2.getRadius()== 2.7f);
 		REQUIRE(c2.getCenter().x_ == 3.2f);
 		REQUIRE(c2.getCenter().y_ == -1.5f);
+		REQUIRE(c2.getColor().r_ == 1.0f);
+		REQUIRE(c2.getColor().g_ == 1.0f);
+		REQUIRE(c2.getColor().b_ == 1.0f);
 
  }
 
     TEST_CASE ("circle_getradius","[getradius]")
  {
-    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}};
-		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}};
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}, Color{1.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}, Color{1.0f}};
 
     REQUIRE(c1.getRadius() == 6.7f);
 
@@ -370,8 +383,8 @@ TEST_CASE("division_operator", "[division_operator]")
 
     TEST_CASE ("circle_getdiameter","[getdiameter]")
  {
-    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}};
-		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}};
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}, Color{1.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}, Color{1.0f}};
 
     REQUIRE(c1.getDiameter() == 1.0f);
 
@@ -381,8 +394,8 @@ TEST_CASE("division_operator", "[division_operator]")
 
     TEST_CASE ("circle_getcenter","[getcenter]")
  {
-    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}};
-		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}};
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}, Color{1.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}, Color{1.0f}};
 
 		REQUIRE(c1.getCenter().x_ == 3.0f);
 		REQUIRE(c1.getCenter().y_ == 1.0f);
@@ -393,8 +406,8 @@ TEST_CASE("division_operator", "[division_operator]")
 
     TEST_CASE ("circle_circumference","[circle_circumference]")
  {
-    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}};
-		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}};
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}, Color{1.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}, Color{1.0f}};
 
     REQUIRE(c1.circumference() == Approx(42.09734156f));
 
@@ -406,31 +419,37 @@ TEST_CASE("division_operator", "[division_operator]")
  
     TEST_CASE ("rectangle_constructor","[rectangle]")
  {
-    Rectangle r1{Vec2{2.6f, 6.1f},Vec2{3.0f,1.0f}};
-		Rectangle r2{Vec2{2.7f, 1.0f},Vec2{3.2f,-1.5f}};
+    Rectangle r1{Vec2{2.6f, 6.1f},Vec2{3.0f,1.0f}, Color{3.2f, 1.0f, 2.1f}};
+		Rectangle r2{Vec2{2.7f, 1.0f},Vec2{3.2f,-1.5f}, Color{1.2f}};
 
     REQUIRE(r1.getMin().x_ == 2.6f);
 		REQUIRE(r1.getMin().y_ == 6.1f);
 		REQUIRE(r1.getMax().x_ == 3.0f);
 		REQUIRE(r1.getMax().y_ == 1.0f);
+		REQUIRE(r1.getColor().r_ == 3.2f);
+		REQUIRE(r1.getColor().g_ == 1.0f);
+		REQUIRE(r1.getColor().b_ == 2.1f);
 
     REQUIRE(r2.getMin().x_ == 2.7f);
 		REQUIRE(r2.getMin().y_ == 1.0f);
 		REQUIRE(r2.getMax().x_ == 3.2f);
 		REQUIRE(r2.getMax().y_ == -1.5f);
+		REQUIRE(r2.getColor().r_ == 1.2f);
+		REQUIRE(r2.getColor().g_ == 1.2f);
+		REQUIRE(r2.getColor().b_ == 1.2f);
 
- }  //bis hier hin geht alles 
+ }  
 
      TEST_CASE ("rectangle_circumference","[rectangle_circumference]")
  {
-    Rectangle r1{Vec2{2.0f,1.0f},Vec2{3.6f, 6.1f}};
-		Rectangle r2{Vec2{2.7f, 1.0f},Vec2{3.2f,1.5f}};
+    Rectangle r1{Vec2{2.0f,1.0f},Vec2{3.6f, 6.1f}, Color{1.2f}};
+		Rectangle r2{Vec2{2.7f, 1.0f},Vec2{3.2f,1.5f}, Color{1.0f}};
 
     REQUIRE(r1.circumference() == Approx(13.4f));
 
     REQUIRE(r2.circumference() == Approx(2.0f));
 
- }  
+ }  //bis hier hin geht alles  
 
  
 
