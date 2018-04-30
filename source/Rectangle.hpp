@@ -10,8 +10,9 @@ class Rectangle
     public:
     Rectangle (Vec2 const& min, Vec2 const& max);
 
-    Vec2 getMin();
-    Vec2 getMax();
+    Vec2 getMin() const;
+    Vec2 getMax() const;
+    float circumference() const;
 
     private:
     Vec2 min_;
