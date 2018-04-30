@@ -11,9 +11,10 @@ class Circle
     Circle (float r, float d, Vec2 const& c);
     Circle (float r, Vec2 const& c);
 
-    float getRadius();
-    float getDiameter();
-    Vec2 getCenter();
+    float getRadius() const;
+    float getDiameter() const;
+    Vec2 getCenter() const;
+    float circumference() const;
 
     private:
     float radius_;
