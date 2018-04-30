@@ -391,6 +391,16 @@ TEST_CASE("division_operator", "[division_operator]")
 		REQUIRE(c2.getCenter().y_ == 1.3f);
  }
 
+    TEST_CASE ("circle_circumference","[circle_circumference]")
+ {
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}};
+
+    REQUIRE(c1.circumference() == Approx(42.09734156f));
+
+    REQUIRE(c2.circumference() == Approx(16.96460033));
+ }
+
 
  /*Rectangle*/
  
@@ -410,6 +420,17 @@ TEST_CASE("division_operator", "[division_operator]")
 		REQUIRE(r2.getMax().y_ == -1.5f);
 
  }  //bis hier hin geht alles 
+
+     TEST_CASE ("rectangle_circumference","[rectangle_circumference]")
+ {
+    Rectangle r1{Vec2{2.0f,1.0f},Vec2{3.6f, 6.1f}};
+		Rectangle r2{Vec2{2.7f, 1.0f},Vec2{3.2f,1.5f}};
+
+    REQUIRE(r1.circumference() == Approx(13.4f));
+
+    REQUIRE(r2.circumference() == Approx(2.0f));
+
+ }  
 
  
 
