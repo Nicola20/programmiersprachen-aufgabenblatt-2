@@ -35,4 +35,11 @@ float Circle::circumference() const {
 
 }
 
+void Circle::draw(Window const& w) {
+    Vec2 center (center_.x_,center_.y_);
+    for(int i = 1; i <= 360; i++){
+       w.draw_point(radius_*cos(i)+ center.x_, radius_*sin(i)+ center.y_,0.0f,0.0f,0.0f);
+    }
+}
+
 

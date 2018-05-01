@@ -3,6 +3,7 @@
 
 #include "Vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 
 class Circle
@@ -17,6 +18,7 @@ class Circle
     Vec2 getCenter() const;
     Color getColor() const;
     float circumference() const;
+    void draw (Window const& w);
 
     private:
     float radius_;
