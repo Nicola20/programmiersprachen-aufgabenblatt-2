@@ -42,12 +42,16 @@ int main(int argc, char* argv[])
     }
 
     Circle c1{200.0f,Vec2{300.0f,100.0f}, Color{0.0f}};
+    Circle c2{100.0f,Vec2{250.0f,150.0f}, Color{0.0f}};
 
     Rectangle r1{Vec2{200.0f,100.0f},Vec2{300.6f, 600.1f}, Color{0.0f}};
+    Rectangle r2{Vec2{100.0f, 50.0f},Vec2{250.0f,150.0f}, Color{0.0f}};
 
     c1.draw(win);
+    c2.draw(win, Color{0.0f, 1.0f, 0.0f});
 
     r1.draw(win);
+    r2.draw(win, Color{1.0f, 0.0f, 0.0f});
 
 
 
