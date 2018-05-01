@@ -26,5 +26,12 @@ float Rectangle::circumference() const{
     float b = max_.y_ - min_.y_;                //Breite
     return 2*a+2*b;
 }
+
+  void Rectangle::draw (Window const& w) {
+      w.draw_line(min_.x_, min_.y_, max_.x_, min_.y_,0.0f,0.0f,0.0f); //min nach rechts
+      w.draw_line(min_.x_, min_.y_, min_.x_, max_.y_,0.0f,0.0f,0.0f); //min nach oben
+      w.draw_line(max_.x_, min_.y_, max_.x_, max_.y_,0.0f,0.0f,0.0f); //unten rechts nach max
+      w.draw_line(max_.x_, max_.y_, min_.x_, max_.y_,0.0f,0.0f,0.0f); //max nach links
+  }
    
 
