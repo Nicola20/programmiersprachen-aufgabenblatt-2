@@ -19,6 +19,7 @@ class Circle
     Color getColor() const;
     float circumference() const;
     void draw (Window const& w);
+    void draw (Window const& w, Color const& c);
 
     private:
     float radius_;
