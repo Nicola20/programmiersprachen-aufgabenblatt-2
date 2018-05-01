@@ -17,6 +17,7 @@ class Rectangle
     float circumference() const;
     Color getColor() const;
     void draw (Window const& w);
+    void draw(Window const& w, Color const& c);
 
     private:
     Vec2 min_;
