@@ -1,7 +1,9 @@
-#include "window.hpp"
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+#include "window.hpp"
+#include "Circle.hpp"
+#include "Rectangle.hpp"
 
 
 int main(int argc, char* argv[])
@@ -14,7 +16,8 @@ int main(int argc, char* argv[])
     }
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
-
+    
+    
     auto t = win.get_time();
 
     float x1{400 + 380 * std::sin(t)};
@@ -29,7 +32,7 @@ int main(int argc, char* argv[])
     win.draw_point(x1, y1,
         1.0f, 0.0f, 0.0f);
     win.draw_point(x2, y2, 0.0f, 1.0f, 0.0f);
-    win.draw_point(x3, y3, 0.0f, 0.0f, 1.0f);
+    win.draw_point(x3, y3, 0.0f, 0.0f, 1.0f); 
 
     auto m = win.mouse_position();
     if (left_pressed) {
@@ -37,6 +40,17 @@ int main(int argc, char* argv[])
           m.first, m.second, // to
           1.0,0.0,0.0);
     }
+
+    Circle c1{200.0f,Vec2{300.0f,100.0f}, Color{0.0f}};
+
+    Rectangle r1{Vec2{200.0f,100.0f},Vec2{300.6f, 600.1f}, Color{0.0f}};
+
+    c1.draw(win);
+
+    r1.draw(win);
+
+
+
 
     win.draw_line(0, m.second, 10, m.second, 0.0, 0.0, 0.0);
     win.draw_line(win.window_size().second - 10, m.second, win.window_size().second, m.second, 0.0, 0.0, 0.0);
