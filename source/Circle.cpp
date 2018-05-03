@@ -43,7 +43,7 @@ float Circle::circumference() const {
 void Circle::draw(Window const& w) {
 
     Vec2 center (center_.x_,center_.y_);
-    for(int i = 1; i <= 360; i++){
+    for(int i = 1; i <= 360; ++i){
        w.draw_point(radius_*cos(i)+ center.x_, radius_*sin(i)+ center.y_,0.0f,0.0f,0.0f);
     }
 }
@@ -51,9 +51,31 @@ void Circle::draw(Window const& w) {
 void Circle::draw (Window const& w, Color const& c) {
 
     Vec2 center (center_.x_,center_.y_);
-    for(int i = 1; i <= 360; i++){
+    for(int i = 1; i <= 360; ++i){
        w.draw_point(radius_*cos(i)+ center.x_, radius_*sin(i)+ center.y_,c.r_, c.g_, c.b_);
     }
+}
+
+bool Circle::is_inside(Vec2 const& v){
+
+    Vec2 center{center_.x_, center_.y_};
+    for (int i = 1; i <= 360; ++i) {
+        Vec2 edge (radius_*cos(i)+ center.x_, radius_*sin(i)+ center.y_);
+        if(v.x_ > center.x_ && v.x_ < edge.x_ && v.y_ > center.y_ && v.y_ < edge.y_){
+            return true;
+        }
+        if(v.x_ < center.x_ && v.x_ < edge.x_ && v.y_ > center.y_ && v.y_ < edge.y_) {
+            return true;
+        }
+        if(v.x_ < center.x_ && v.x_ < edge.x_ && v.y_ < center.y_ && v.y_ < edge.y_) {
+            return true;
+        }
+        if(v.x_ > center.x_ && v.x_ < edge.x_ && v.y_ < center.y_ && v.y_ < edge.y_) {
+            return true;
+        }
+    }
+    return false;
+
 }
 
 

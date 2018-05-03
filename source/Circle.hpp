@@ -20,6 +20,7 @@ class Circle
     float circumference() const;
     void draw (Window const& w);
     void draw (Window const& w, Color const& c);
+    bool is_inside(Vec2 const& v);
 
     private:
     float radius_;
