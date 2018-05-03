@@ -1,9 +1,13 @@
-#include <GLFW/glfw3.h>
-#include <utility>
-#include <cmath>
 #include "window.hpp"
 #include "Circle.hpp"
 #include "Rectangle.hpp"
+#include "Vec2.hpp"
+
+#include <GLFW/glfw3.h>
+#include <utility>
+#include <cmath>
+#include <vector>
+
 
 
 int main(int argc, char* argv[])
@@ -52,6 +56,35 @@ int main(int argc, char* argv[])
 
     r1.draw(win);
     r2.draw(win, Color{1.0f, 0.0f, 0.0f});
+
+   /*if(is_inside(win.mouse_position() == true)){
+
+   }*/
+
+   std::vector<Circle> vc;
+   std::vector<Rectangle> vr;
+
+   vc.push_back(c1);
+   vc.push_back(c2);
+
+   vr.push_back(r1);
+   vr.push_back(r2);
+
+    Vec2 n {(float)win.mouse_position().first,(float)win.mouse_position().second}; //wie bekomme ich hier die x und y Koordinate, da mit first und second eine linie gezogen wird.
+
+    Color clr{0.0f,0.0f,1.0f};
+
+    for(int i = 0; i < vr.size(); ++i){       //Rectangle
+      if(vr[i].is_inside(n) == true){
+        vr[i].draw(win,clr);
+      }
+    }
+
+    for(int i = 0; i < vc.size(); ++i){        //Circle
+      if(vc[i].is_inside(n) == true){
+        vc[i].draw(win,clr);
+      }
+}
 
 
 
