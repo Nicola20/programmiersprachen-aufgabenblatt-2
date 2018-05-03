@@ -29,7 +29,7 @@ public:
   void draw_text(float x, float y, float font_size, std::string const& text) const;
 
   // Return the mouse position in screen coordinates
-  std::pair<double, double> mouse_position() const;
+  std::pair<double, double> mouse_position() const; 
 
   // is closed flag set
   bool should_close() const;

@@ -119,9 +119,9 @@ bool Window::should_close() const
   return glfwWindowShouldClose(m_window);
 }
 
-std::pair<double, double> Window::mouse_position() const
+std::pair<double, double> Window::mouse_position() const //hab hier double werte durch floats getauscht 
 {
-  double xpos=0.0;
+  double xpos=0.0f;
   double ypos=0.0f;
   glfwGetCursorPos(m_window, &xpos, &ypos);
   return {xpos, ypos};
