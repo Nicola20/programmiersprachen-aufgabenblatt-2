@@ -18,6 +18,7 @@ class Rectangle
     Color getColor() const;
     void draw (Window const& w);
     void draw(Window const& w, Color const& c);
+    bool is_inside(Vec2 const& v);
 
     private:
     Vec2 min_;
