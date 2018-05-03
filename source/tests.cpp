@@ -1,12 +1,11 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
-
-#include <cmath>
 #include "Vec2.hpp"
 #include "Mat2.hpp"
 #include "color.hpp"
 #include "Circle.hpp"
 #include "Rectangle.hpp"
+#include <cmath>
 
 /*Vektoren*/
  TEST_CASE ("custom_constructor","[custom]")
@@ -414,6 +413,19 @@ TEST_CASE("division_operator", "[division_operator]")
     REQUIRE(c2.circumference() == Approx(16.96460033));
  }
 
+    TEST_CASE ("describe_circle_isinside","[circle_isinside]")
+ {
+    Circle c1{6.7f, 1.0f,Vec2{3.0f,1.0f}, Color{1.0f}};
+		Circle c2{2.7f, 5.0f,Vec2{1.0f,1.3f}, Color{1.0f}};
+		Vec2 v1{4.3f,5.4f};
+		Vec2 v2{300.0f, 251.0f};
+
+    REQUIRE(c1.is_inside(v1) == true);
+
+    REQUIRE(c2.is_inside(v2) == false);
+ }
+ 
+
 
  /*Rectangle*/
  
@@ -449,8 +461,21 @@ TEST_CASE("division_operator", "[division_operator]")
 
     REQUIRE(r2.circumference() == Approx(2.0f));
 
- }  //bis hier hin geht alles  
+ }  //bis hier hin geht alles 
 
+
+     TEST_CASE ("describe_rectangle_isinside","[rectangle_isinside]")
+ {
+    Rectangle r1{Vec2{3.0f, 1.0f},Vec2{6.7f,5.0f}, Color{1.0f}};
+		Rectangle r2{Vec2{2.7f, 5.0f},Vec2{1.0f,1.3f}, Color{1.0f}};
+		Vec2 v1{4.3f,3.4f};
+		Vec2 v2{300.0f, 251.0f};
+
+    REQUIRE(r1.is_inside(v1) == true);
+
+    REQUIRE(r2.is_inside(v2) == false);
+ } 
+ //bis hier hin geht alles
  
 
 int main(int argc, char *argv[])
